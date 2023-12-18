@@ -1,0 +1,64 @@
+.container {
+    padding-bottom: 15px;
+    border-bottom: 1px solid gray;
+    width: 80%;
+    margin: 0 auto;
+}
+.container:last-child {
+    border-bottom: none;
+}
+.wrapper {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+    width: 100%;
+}
+.infoData {
+    text-align: left;
+    line-height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.info {
+    text-align: center;
+}
+.infoFeelsLike {
+    display: flex;
+    align-items: center;
+}
+.openClose{
+    margin-left: 5px;
+}
+
+/*When we click on the mainPage data*/
+.otherDataWrapper {
+    display: flex;
+    width: 100%;
+    padding-bottom: 10px;
+    justify-content: space-between;
+}
+
+.otherData {
+    width: 49%;
+    margin-top: 10px;
+}
+
+.belowOtherDataLine {
+    padding-top: 5px;
+    border-bottom: 1px solid black;
+}
+
+.wrapperInfoDark {
+    border-bottom: 1px solid rgba(244, 239, 239, 0.2);
+    padding: 5px 0;
+}
+.wrapperInfoLight {
+    border-bottom: 1px solid rgba(42, 34, 34, 0.2);
+    padding: 5px 0;
+}
+
+
+.infoText{
+    margin-left: 10px;
+}

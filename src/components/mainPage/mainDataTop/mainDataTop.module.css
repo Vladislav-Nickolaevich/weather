@@ -1,0 +1,27 @@
+.top {
+    margin-top: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.lineVertical {
+    margin: 1px 0;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 20px;
+    margin-left: 5%;
+}
+
+.btnColor {
+    width: 5%;
+    height: 100%;
+}

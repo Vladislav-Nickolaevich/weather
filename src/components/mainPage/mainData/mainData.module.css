@@ -1,0 +1,25 @@
+.wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.city {
+    font-size: 60px;
+}
+
+.currentData{
+    line-height: 30px;
+    font-size: 20px;
+    text-align: right;
+}
+
+
+.temp{
+    font-size: 70px;
+}
+.description{
+    font-size: 20px;
+    line-height: 25px;
+    margin-bottom: 40px;
+}

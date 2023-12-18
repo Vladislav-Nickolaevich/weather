@@ -1,0 +1,18 @@
+.containerLight {
+    margin: 20px 15% 0 15%;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+.containerDark {
+    margin: 20px 15% 0 15%;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.line {
+    margin: 15px 0;
+}
+
+.wrapperWeather{
+    padding: 20px;
+}

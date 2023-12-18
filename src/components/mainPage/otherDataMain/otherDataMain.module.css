@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    font-size: 25px;
+    margin-bottom: 50px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    width: 50%;
+}
+
+.wrapperInfoDark {
+    border-bottom: 1px solid rgba(244, 239, 239, 0.2);
+    padding: 5px 0;
+}
+.wrapperInfoLight {
+    border-bottom: 1px solid rgba(42, 34, 34, 0.2);
+    padding: 5px 0;
+}
+.lastSpan{
+    padding-top: 5px;
+}
+.textInfo{
+    margin-left: 10px;
+}
