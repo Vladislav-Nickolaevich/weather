@@ -7,15 +7,19 @@ import MainPage from "./components/mainPage/mainPage";
 
 import {ThemeProvider} from "styled-components";
 import {darkTheme, GlobalStyles, lightTheme} from "./components/themes/globalStyles";
+import {getLocalStorage, setAppTheme, setLocalStorage } from './utils';
+import {themeAC} from "./store/reducers/themeReducer/themeReducer";
 
 
 
 function App() {
     const city = useAppSelector(state => state.weather.city)
+    const themeFromRedux = useAppSelector(state => state.theme.theme)
+
     const dispatch = useAppDispatch()
 
     const [edit, setEdit] = useState(false)
-    const [theme, setTheme] = useState("light");
+    const [theme, setTheme] = useState(themeFromRedux);
 
     const isDarkTheme = theme === "dark";
 
@@ -24,24 +28,16 @@ function App() {
     const toggleTheme = () => {
         const updatedTheme = isDarkTheme ? "light" : "dark";
         setTheme(updatedTheme);
-        localStorage.setItem("theme", updatedTheme);
+        setLocalStorage("theme", updatedTheme)
+        dispatch(themeAC(updatedTheme))
     };
     const onClickSearchCity = (newCity: string) => dispatch(weatherTC(newCity))
 
     useEffect(() => {
-        const savedTheme = localStorage.getItem("theme");
-        const prefersDark = window.matchMedia &&
-            window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (savedTheme && ["dark", "light"].includes(savedTheme)) {
-            setTheme(savedTheme);
-        } else if (prefersDark) {
-            setTheme("dark");
-        }
-    }, []);
-
-    useEffect(() => {
+        const savedTheme = getLocalStorage("theme")
+        setAppTheme(savedTheme, setTheme)
         dispatch(weatherTC(city))
-    }, [])
+    }, []);
     return (
         <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
             <>
@@ -53,13 +49,11 @@ function App() {
                         onClickSearchCity={onClickSearchCity}
                         edit={edit}
                         toggleTheme={toggleTheme}
-                        theme={theme}
                     />
                     :
                     <HourlyForecast
                         edit={onClickHourly}
                         city={city}
-                        theme={theme}
                     />
                 }
             </>

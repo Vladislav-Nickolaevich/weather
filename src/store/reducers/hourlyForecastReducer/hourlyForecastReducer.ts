@@ -1,8 +1,10 @@
 import {HoursType, weatherAPI} from "../../../api/api";
 import {Dispatch} from "redux";
 import {errorMessageAC} from "../errorReducer/errorReducer";
+import { getTemp } from "../../../utils";
+import {InitialType} from "../nextWeekReducer/nextWeekReducer";
 
-const hourlyForecastReducer = (state: InitialStateType[] = initialState, action: ActionsType): InitialStateType[] => {
+const hourlyForecastReducer = (state: InitialType[] = initialState, action: ActionsType): InitialType[] => {
     switch (action.type) {
         case 'HOURS_WEATHER_TODAY':
             let hoursNow = String((new Date()).getHours() + 1)
@@ -12,8 +14,8 @@ const hourlyForecastReducer = (state: InitialStateType[] = initialState, action:
                 return ({
                         conditions: el.conditions,
                         datetime: el.datetime.slice(0, 5),
-                        temp: +((+el.temp - 32) / 1.8).toFixed(0),
-                        feelslike: +((+el.feelslike - 32) / 1.8).toFixed(0),
+                        temp: getTemp(el.temp),
+                        feelslike: getTemp(el.feelslike),
                         windspeed: el.windspeed,
                         humidity: el.humidity,
                         visibility: el.visibility,
@@ -29,8 +31,8 @@ const hourlyForecastReducer = (state: InitialStateType[] = initialState, action:
                 return ({
                         conditions: el.conditions,
                         datetime: el.datetime.slice(0, 5),
-                        temp: +((+el.temp - 32) / 1.8).toFixed(0),
-                        feelslike: +((+el.feelslike - 32) / 1.8).toFixed(0),
+                        temp: getTemp(el.temp),
+                        feelslike: getTemp(el.feelslike),
                         windspeed: el.windspeed,
                         humidity: el.humidity,
                         visibility: el.visibility,
@@ -77,18 +79,5 @@ export const hourlyForecastDayHoursTC = (city: string) => (dispatch: Dispatch) =
 
 }
 
-type InitialStateType = {
-    datetime: string
-    conditions: string
-    temp: number
-    feelslike: number
-    pressure: number
-    windspeed: number
-    humidity: number
-    visibility: number
-    datetimeEpoch: number
-}
-
-const initialState: InitialStateType[] = [
-]
+const initialState: InitialType[] = []
 

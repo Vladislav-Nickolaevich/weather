@@ -12,14 +12,13 @@ import AirIcon from '@mui/icons-material/Air';
 import ScaleIcon from '@mui/icons-material/Scale';
 import WaterDropIcon from '@mui/icons-material/WaterDrop';
 
-type OtherWeatherDataMainType = {
-    theme: string
-}
 
-const OtherDataMain = (props: OtherWeatherDataMainType) => {
+
+const OtherDataMain = () => {
     const state = useAppSelector(state => state.weather)
+    const theme = useAppSelector(state => state.theme.theme)
 
-    const color = props.theme === 'dark'? s.wrapperInfoDark : s.wrapperInfoLight
+    const color = theme === 'dark'? s.wrapperInfoDark : s.wrapperInfoLight
     return (
         <div className={s.container}>
 

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useAppDispatch} from "../../store/store";
+import {useAppDispatch, useAppSelector} from "../../store/store";
 import {hourlyForecastDayHoursTC} from "../../store/reducers/hourlyForecastReducer/hourlyForecastReducer";
 
 import HourlyToday from "./today/hourlyToday";
@@ -14,6 +14,7 @@ import Divider from "@mui/material/Divider";
 
 const HourlyForecast = (props: HourlyForecastType) => {
     const dispatch = useAppDispatch()
+    const theme = useAppSelector(state => state.theme.theme)
 
     const onClickBack = () => props.edit(false)
 
@@ -49,7 +50,7 @@ const HourlyForecast = (props: HourlyForecastType) => {
                     light={true}
                     orientation={'horizontal'}
                     variant={'fullWidth'}
-                    color={props.theme === 'light' ? 'black' : 'white'}
+                    color={theme === 'light' ? 'black' : 'white'}
                 />
             </div>
 
@@ -62,7 +63,10 @@ const HourlyForecast = (props: HourlyForecastType) => {
                     Next week
                 </Button>
             </div>
-            { today? <HourlyToday theme={props.theme}/>: <HourlyNextWeek theme={props.theme}/> }
+            { today?
+                <HourlyToday/>:
+                <HourlyNextWeek/>
+            }
 
         </div>
     );
@@ -74,5 +78,4 @@ export default HourlyForecast;
 type HourlyForecastType = {
     city: string
     edit: (value: boolean) => void
-    theme: string
 }

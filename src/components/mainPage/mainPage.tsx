@@ -7,22 +7,24 @@ import MainDataTop from "./mainDataTop/mainDataTop";
 
 import {Button} from "@mui/material";
 import Divider from '@mui/material/Divider';
+import {useAppSelector} from "../../store/store";
 
 
 const MainPage = (props: HeaderType) => {
+    const theme = useAppSelector(state => state.theme.theme)
 
     const onClick = () => props.onClickHourly(!props.edit)
-    const colorLine = props.theme === 'light' ? 'black' : 'white'
+    const colorLine = theme === 'light' ? 'black' : 'white'
 
     return (
         <div>
             <MainDataTop
                 toggleTheme={props.toggleTheme}
                 onClickSearchCity={props.onClickSearchCity}
-                theme={props.theme}
+                theme={theme}
             />
 
-            <div className={props.theme === 'dark'? s.containerDark: s.containerLight}>
+            <div className={theme === 'dark'? s.containerDark: s.containerLight}>
                 <div className={s.wrapperWeather}>
 
                     <MainData/>
@@ -45,7 +47,7 @@ const MainPage = (props: HeaderType) => {
                         />
                     </div>
 
-                    <OtherDataMain theme={props.theme}/>
+                    <OtherDataMain/>
 
                 </div>
             </div>
@@ -62,5 +64,4 @@ type HeaderType = {
     onClickHourly: (value: boolean) => void
     edit: boolean
     toggleTheme: () => void
-    theme: string
 }

@@ -11,10 +11,12 @@ import ScaleIcon from '@mui/icons-material/Scale';
 
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
+import {useAppSelector} from "../../../../store/store";
 
 const HourlyOtherData = (props: HourlyOtherDataType) => {
+    const theme = useAppSelector(state => state.theme.theme)
 
-    const color = props.theme === 'dark'? s.wrapperInfoDark : s.wrapperInfoLight
+    const color = theme === 'dark'? s.wrapperInfoDark : s.wrapperInfoLight
 
     return (
         <div className={s.otherDataWrapper}>
@@ -80,7 +82,6 @@ type HourlyOtherDataType = {
     humidity: number
     visibility: number
     windspeed: number
-    theme:string
 
     sunrise?: string
     sunset?: string

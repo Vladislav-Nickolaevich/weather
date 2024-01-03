@@ -1,6 +1,7 @@
 import {CurrentConditionsType, DaysType, weatherAPI} from "../../../api/api";
 import {Dispatch} from "redux";
 import {errorMessageAC} from "../errorReducer/errorReducer";
+import { getTemp } from "../../../utils";
 
 
 const weatherReducer = (state: WeatherType = initialState, action: DataWeatherACType):WeatherType  => {
@@ -11,12 +12,12 @@ const weatherReducer = (state: WeatherType = initialState, action: DataWeatherAC
                 currentData: newData,
 
                 city: action.city,
-                degree: +((+action.current.temp - 32) / 1.8).toFixed(0),
-                feelingDegree: +((+action.current.feelslike - 32) / 1.8).toFixed(0),
+                degree: getTemp(action.current.temp),
+                feelingDegree: getTemp(action.current.feelslike),
 
                 description: action.current.conditions,
-                maxTemp: +((+action.day.tempmax - 32) / 1.8).toFixed(0),
-                minTemp: +((+action.day.tempmin - 32) / 1.8).toFixed(0),
+                maxTemp: getTemp(action.day.tempmax),
+                minTemp: getTemp(action.day.tempmin),
 
                 sunrise: action.current.sunrise,
                 sunset: action.current.sunset,
