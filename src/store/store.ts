@@ -5,13 +5,16 @@ import weatherReducer from "./reducers/weatherReducer/wetherReducer";
 import hourlyForecastReducer from "./reducers/hourlyForecastReducer/hourlyForecastReducer";
 import nextWeekReducer from "./reducers/nextWeekReducer/nextWeekReducer";
 import errorReducer from "./reducers/errorReducer/errorReducer";
+import themeReducer from './reducers/themeReducer/themeReducer';
+
 
 
 const rootReducer = combineReducers({
     weather: weatherReducer,
     hourlyForecast: hourlyForecastReducer,
     newxtWeek: nextWeekReducer,
-    error: errorReducer
+    error: errorReducer,
+    theme: themeReducer
 })
 
 type ThunkDispatchType = ThunkDispatch<AppRootState, any, AnyAction>
