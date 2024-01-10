@@ -23,3 +23,20 @@
     line-height: 25px;
     margin-bottom: 40px;
 }
+
+
+@media (max-width: 800px) {
+    .city {
+        font-size: 40px;
+    }
+    .temp{
+        font-size: 50px;
+    }
+    .description{
+        font-size: 17px;
+    }
+    .currentData{
+        line-height: 20px;
+        font-size: 17px;
+    }
+}

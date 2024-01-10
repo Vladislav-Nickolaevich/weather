@@ -40,7 +40,6 @@ function App() {
     }, []);
     return (
         <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-            <>
                 <GlobalStyles/>
                 {
                     !edit ?
@@ -56,7 +55,6 @@ function App() {
                         city={city}
                     />
                 }
-            </>
         </ThemeProvider>
     );
 }
